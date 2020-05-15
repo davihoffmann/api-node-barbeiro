@@ -3,4 +3,4 @@ Projeto de um api node para um sistema de barbearia
 
 # Como executar
 utilizar comando:
-node src/server.js
+yarn dev
