@@ -51,6 +51,17 @@ class AppointmentController {
     const { provider_id, date } = req.body;
 
     /**
+     * Check se um provedor de serviço está marcando um agendamento
+     * para ele mesmo
+     */
+    if (provider_id === req.userId) {
+      return res.status(400).json({
+        error:
+          'Um provedor de serviço não pode criar um agendamento para ele mesmo',
+      });
+    }
+
+    /**
      * Check if provider_id is a provider
      */
     const isProvider = await User.findOne({
